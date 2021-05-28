@@ -69,22 +69,42 @@
       <script>
 
           
-          window.onload = async () => {
+          window.onload = async() => {
               const getMovies = document.getElementById("movie-cards")
               const url = "https://striveschool-api.herokuapp.com/api/movies/"
               let api = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGFmOTc4M2JlOWIxNTAwMTU1MDZlMmEiLCJpYXQiOjE2MjIyMDEzODEsImV4cCI6MTYyMzQxMDk4MX0.Leuk8wIIFBM_h0kN6kwoSkeBaEQLlu_tdWZvL3PAlK8"
-    
 
-
-            try{
-              const response = await fetch(url,{headers:{
+           
+          
+                try{
+                const response = await fetch(url,{headers:{
                   authorization: api,
                   "username":"kristian.utsar@hotmail.com",
                   "password":"helloworld"
                 }})
-                const data = await response.json()
-                console.log(response)
-                console.log(data)
+                const movies = await response.json()
+
+                if(movies.length >0){
+                    movies.forEach((movie) => {
+                        getMovies.innerHTML = ` <div class="card" style="width: 18rem;">
+                        <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <p id="name" class="card-text">${movie.name}</p>
+                          <p id="genre" class="card-text">${movie.genre}</p>
+                        </div>
+                      </div>`
+                        
+                    });
+                    
+
+                }else{
+                    getMovies.innerHTML = `<div class="card" style="width: 18rem;">
+                        <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <p id="name" class="card-text">No Movies</p>
+                        </div>
+                      </div>`
+                }
             }catch (error){
                 console.log(error)
             }

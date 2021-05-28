@@ -20,7 +20,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                   <div class="navbar-nav">
-                    <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link active" href="/home.html">Home <span class="sr-only">(current)</span></a>
                     <a class="nav-link" href="#">TV Shows</a>
                     <a class="nav-link" href="#">Movies</a>
                     <a class="nav-link" href="#">Recently Added</a>
@@ -76,13 +76,40 @@
             "username": "kristian.utsar@hotmail.com",
             "password":"helloworld"
         })
-        
-        window.onload = ()=>{
+        const urlParams = new URLSearchParams(window.location.search)
+        console.log(urlParams)
+        let movieId = urlParams.get("movieId")
 
-            
+        const endPoint = movieId ? "https://striveschool-api.herokuapp.com/api/movies/" + movieId : "https://striveschool-api.herokuapp.com/api/movies/"
 
+        const movieObj = {
+            name:"",
+            genre:""
         }
-        fetch("url")
+
+        const generateMovies = (obj = movieObj) =>{
+            document.getElementById("name").value = obj.name
+            document.getElementById("genre").value = obj.genre
+        }
+
+        const myMovie = {
+            name: document.getElementById("name").value,
+            genre: document.getElementById("genre").value
+        }
+
+        const method = movieId ? "PUT" : "POST"
+
+        
+        window.onload = async ()=>{
+            console.log(movieId)
+            
+                const response = await fetch(endPoint,{
+                    method,
+                    body: JSON.stringify(myMovie),
+                    headers,
+                })
+        }
+        
 
 
 

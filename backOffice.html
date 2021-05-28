@@ -83,16 +83,19 @@
         const endPoint = movieId ? "https://striveschool-api.herokuapp.com/api/movies/" + movieId : "https://striveschool-api.herokuapp.com/api/movies/"
 
         const movieObj = {
+            img: "",
             name:"",
             genre:""
         }
 
         const generateMovies = (obj = movieObj) =>{
+            document.getElementById("img").value = obj.img
             document.getElementById("name").value = obj.name
             document.getElementById("genre").value = obj.genre
         }
 
         const myMovie = {
+            img: document.getElementById("img").value,
             name: document.getElementById("name").value,
             genre: document.getElementById("genre").value
         }

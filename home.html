@@ -70,13 +70,11 @@
 
           
           window.onload = async () => {
-              const addMovies = document.getElementById("movie-cards")
+              const getMovies = document.getElementById("movie-cards")
               const url = "https://striveschool-api.herokuapp.com/api/movies/"
               let api = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGFmOTc4M2JlOWIxNTAwMTU1MDZlMmEiLCJpYXQiOjE2MjIyMDEzODEsImV4cCI6MTYyMzQxMDk4MX0.Leuk8wIIFBM_h0kN6kwoSkeBaEQLlu_tdWZvL3PAlK8"
     
-            //   fetch(url)
-            //   .then((response) => response.json())
-            //   .then((data) => console.log(data))
+
 
             try{
               const response = await fetch(url,{headers:{
@@ -90,6 +88,8 @@
             }catch (error){
                 console.log(error)
             }
+
+            
           }
 
 

@@ -2,18 +2,25 @@
     padding: 0;
     margin: 0;
 }
-.container-fluid{
+#index-container-fluid{
     position: relative;
     background: url("/assets/signUpPageBackground.jpg");
     background-size: cover;
     width: 100%;
     height: 100vh;
-
+}
+#home-container-fluid{
+    background-color: black;
+    height: 100vh;
 }
 #nav{
     display: flex;
     justify-content: space-between;
     height: 75px;
+}
+.navbar-collapse{
+    display: flex;
+    justify-content: space-between;
 }
 #sign-in-btn{
     background-color: red;
